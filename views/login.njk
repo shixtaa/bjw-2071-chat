@@ -1,0 +1,16 @@
+{% extends 'layout.njk' %}
+{% block content%}
+    <div class="container">
+        <div class="title">登录</div>
+        <div class="content">
+            <input class="login-input" placeholder="昵称/用户名"></input>
+            <button class="login-button">马上登录</button>
+        </div>
+    </div>
+{% endblock %}
+{% block style%}
+    <link rel='stylesheet', href='/css/login.css'>
+{% endblock %}
+{% block script%}
+<script src="./js/login.js"></script>
+{% endblock %}
