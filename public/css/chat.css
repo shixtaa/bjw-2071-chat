@@ -1,0 +1,90 @@
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #e1f2fb;
+}
+.title{
+    /* margin: 0 auto; */
+    padding:0 50px;
+    border-bottom: 0.5px solid #7f78d2;
+    font-size: 28px;
+    /* padding-bottom: 10px; */
+    height: 80px;
+    line-height: 80px;
+    color:#7f78d2;
+}
+.chat-content{
+    margin-left: 50px;
+    overflow-y: auto;
+    margin-top: 30px;
+    height: calc(100% - 170px);
+}
+.talking{
+    padding: 10px 0;
+    /* position: absolute; */
+}
+.left{
+    /* position:absolute; */
+    width: 60px;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+}
+img{
+    margin: 0 auto;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius:20px ;
+}
+.name{
+    display: inline-block;
+    /* text-align: center; */
+}
+.content{
+    display: inline-block;
+    width: 200px;
+    min-height: 40px;
+    background-color: #878ecd;
+    border-radius: 20px;
+    padding: 0px 20px;
+    line-height: 40px;
+    /* position: absolute; */
+    overflow: hidden;
+    overflow-wrap: break-word;
+    /* margin-left: 100px; */
+    
+}
+.time{
+    margin: 15px 0px 0px 80px;
+    color: rgba(0, 0, 0, 0.3);
+}
+footer{
+    margin:0 auto 20px auto;
+    width: 85%;
+    /* position: relative; */
+    height: 40px;
+    /* text-align: center; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    /* background-color: pink; */
+}
+i{
+    vertical-align: middle;
+    padding: 0 5px;
+    /* position: absolute;
+    width: 50px;
+    height: 40px;
+    background-color: yellow; */
+}
+
+.chat-input{
+    min-width: 300px;
+    display: inline-block;
+    height: 38px; 
+    width: calc(100% - 100px);
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+}    

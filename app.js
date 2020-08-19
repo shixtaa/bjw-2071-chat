@@ -19,6 +19,9 @@ const routes = require('./routes')
 
 const port = process.env.PORT || config.port
 
+const nunjucksEnv=require('nunjucks')
+
+const {formatTime}=require('./common/utils')
 const {initConnection}=require('./models/connection/index')
 initConnection()
 
@@ -34,7 +37,7 @@ app.use(bodyparser())
   }))
   .use(require('koa-static')(__dirname + '/public'))
   .use(views(path.join(__dirname, '/views'), {
-    options: {settings: {views: path.join(__dirname, 'views')}},
+    options: {nunjucksEnv},
     map: {'njk': 'nunjucks'},
     extension: 'njk'
   }))
@@ -48,6 +51,12 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
+
+nunjucksEnv.configure(path.join(__dirname, '/views'),{
+
+  trimBlocks: true,
+  lstripBlocks: true
+}).addFilter('formatTime',formatTime)
 
 // 路由 调用的routes下的index.js
 routes(router)

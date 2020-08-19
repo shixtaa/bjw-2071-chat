@@ -6,7 +6,7 @@ btnEle.onclick=()=>{
   if(nickName){
     $.ajax({
       type:'post',
-      url:'http://localhost:3000/chat/login',
+      url:'http://192.168.10.182:3000/chat/login',
       data:{
         nickName
       },

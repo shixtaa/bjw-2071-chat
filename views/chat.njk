@@ -1,13 +1,32 @@
 {% extends 'layout.njk' %}
 {% block content%}
-    <div>
+    <div class='title'>
         {{name}}
     </div>
-    <br>
+    <div class="chat-content">
+        {%for item in contents%}
+        <div class='talking'>
+            <div class="left">
+                <img src='{{item.avatar}}' alt="" >
+                <span class="name">{{item.nickName}}</span>
+            </div>
+            <span class="content">{{item.content}}</span>
+            <div class="time">
+                {{item.createdBy | formatTime}}
+                {# {{item.createdBy}} #}
+            </div>    
+        </div>
+        {%endfor%}
+    </div>
+    <footer class="footer">
+        <i class="fa fa-smile-o  fa-2x"  aria-hidden="true"></i>
+        <input type="text" class="chat-input" placeholder="请输入...">
+    </footer>
 {% endblock %}
 {% block style%}
-
+{# <meta http-equiv="Refresh" content="2"> #}
+<link rel='stylesheet', href='/css/chat.css'>
 {% endblock %}
 {% block script%}
-
+<script src="./js/chat.js"></script>
 {% endblock %}
