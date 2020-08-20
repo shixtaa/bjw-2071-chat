@@ -61,12 +61,12 @@ img{
     color: rgba(0, 0, 0, 0.3);
 }
 footer{
-    margin:0 auto 20px auto;
-    width: 85%;
+    margin:0 auto 20px 50px;
+    width: 90%;
     /* position: relative; */
     height: 40px;
     /* text-align: center; */
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid black;
     /* background-color: pink; */
 }
 i{
@@ -88,3 +88,16 @@ i{
     outline: none;
     background-color: rgba(0, 0, 0, 0);
 }    
+
+.warning{
+    width: 100px;
+    height: 20px;
+    font-size: 16px;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    position:fixed;
+    top: 100px;
+    right: 0px;
+    color: white;
+    text-align: center;
+    /* display: none; */
+}

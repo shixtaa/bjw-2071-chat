@@ -48,18 +48,22 @@ async function addContent(ctx,next){
       nickName,
       avatar,
       content
+      // createdBy:new Date()
     }
     await services.addContent(data)
-    let result=await services.getContent({})
-    // result.map(result,(o)=>{
-    //   return o.createdBy | formatTime
-    // })
+    let result=await services.getContent()
     ctx.response.body=result
   }
+}
+
+async function getContent(ctx,next){
+  const contents=await services.getContent()
+  ctx.response.body=contents
 }
 module.exports={
   login,
   chatLogin,
   chat,
-  addContent
+  addContent,
+  getContent
 }

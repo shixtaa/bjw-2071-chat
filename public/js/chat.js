@@ -1,9 +1,11 @@
 let inputEle=document.querySelector('.chat-input')
+let timer
+let originData
 
-function test(){
-  
-}
-inputEle.onkeydown=function test(e){
+renderAll()
+
+scrollToBottom()
+inputEle.onkeydown=(e)=>{
   let key=e.which
   if(key==13){
     var content=inputEle.value
@@ -13,14 +15,35 @@ inputEle.onkeydown=function test(e){
         url:'http://192.168.10.182:3000/chat/addContent',
         data:{
           content
-        // date
         },
         success:(result)=>{
           inputEle.value=''
           $('.chat-content').html('')
-          let html=''
-          result.forEach((item)=>{
-            html+=`<div class='talking'>
+          renderChat(result)
+          originData=result
+          scrollToBottom()
+        }
+      })
+    }
+  }
+}
+
+function renderAll(){
+  $.ajax({
+    type:'get',
+    url:'http://192.168.10.182:3000/chat/getContent',
+    data:{},
+    success:(result)=>{
+      originData=result
+      stopPolling()
+      longPolling()
+    }
+  })
+}
+function renderChat(contents){
+  let html=''
+  contents.forEach((item)=>{
+    html+=`<div class='talking'>
           <div class="left">
               <img src='${item.avatar}' alt="">
               <span class="name">${item.nickName}</span>
@@ -30,17 +53,75 @@ inputEle.onkeydown=function test(e){
           ${moment(item.createdBy).locale('zh-cn').format('YYYYMMMMDo aH:mm:ss')}
           </div>    
       </div>`
-          })
-          $('.chat-content').html(html) 
-          $('.chat-content').scrollTop($('.chat-content').prop('scrollHeight'))
+  })
+  $('.chat-content').html(html) 
+}
+
+function scrollToBottom(){
+  let ele=document.querySelector('.chat-content')
+  ele.scrollTop=ele.scrollHeight
+}
+
+function longPolling(){
+  timer=setInterval(()=>{
+    $.ajax({
+      type:'get',
+      url:'http://192.168.10.182:3000/chat/getContent',
+      data:{},
+      success:(result)=>{
+        renderChat(result)
+        let times=0
+        result.filter((item)=>{
+          if(moment(originData[originData.length-1].createdBy).isBefore(moment(item.createdBy))){
+            times++ 
+          }
+        })
+        
+        if(times>0){
+          console.log(times)
+          renderWarning(times)
+        }else{
+          console.log('没有新消息')
         }
-      })
-    }
-    
-    
+      }
+    })
+  },2000)
+}
+
+function stopPolling(){
+  if(timer){
+    clearInterval(timer)
   }
 }
 
-// setInterval(function(){
-//   inputEle.onkeydown
-// },2)
+
+const warningEle=document.querySelector('.warning')
+let flag=true
+function renderWarning(times){
+  if(times>0){
+    let html='有'+times+'条新消息'
+    $('.warning').html(html)
+    warningEle.style.backgroundColor='grey'
+    warningEle.style.display='block'
+  }
+}
+
+warningEle.onclick=function(){
+  scrollToBottom()
+  warningEle.style.display='none'
+  $.ajax({
+    type:'get',
+    url:'http://192.168.10.182:3000/chat/getContent',
+    data:{},
+    success:(result)=>{
+      originData=result
+    }
+  })
+  // renderChat(originData)
+  
+}
+
+
+
+
+

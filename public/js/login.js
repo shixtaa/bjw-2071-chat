@@ -2,6 +2,10 @@ const btnEle=document.querySelector('.login-button')
 const inputEle=document.querySelector('.login-input')
 
 btnEle.onclick=()=>{
+  login()
+}
+
+function login(){
   let nickName=inputEle.value
   if(nickName){
     $.ajax({
@@ -19,5 +23,11 @@ btnEle.onclick=()=>{
         console.log(error)
       }
     })
+  }
+}
+inputEle.onkeydown=(e)=>{
+  let key=e.which
+  if(key==13){
+    login()
   }
 }

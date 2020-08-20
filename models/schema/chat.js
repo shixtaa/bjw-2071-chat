@@ -7,7 +7,9 @@ const chatsSchema = new Schema({
   avatar:String,
   content:String,
   // createdBy:{type:Date,default:moment().format('YYYY-MM-DD HH:mm:ss')}
-  createdBy:{type:Date,default:new Date()}
+  // createdBy:{type:Date,default:new Date()}
+  createdBy:{type:Date,default:Date.now}
+
 })
 
 const chatsModel = mongoose.model('chats', chatsSchema)
