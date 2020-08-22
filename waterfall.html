@@ -11,7 +11,6 @@
         }
         .box{
             position: relative;
-            width: 90%;
             margin: 0 auto;
         }
         .item{
@@ -143,12 +142,15 @@
 </div>
     <script>
         let items=document.getElementsByClassName('item');
+        
         let gap=20;
         waterfall();
         function waterfall(){
+            let box=document.getElementsByClassName('box')[0]
             let itemWidth=items[0].offsetWidth;
             let pageWidth=window.innerWidth;
             let columns=parseInt(pageWidth/(itemWidth+gap)) ;
+            box.style.width=columns*(itemWidth+gap)+'px'
             let arr=[]
             for(let i=0;i<items.length;i++){
                 if(i<columns){
