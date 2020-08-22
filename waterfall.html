@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .item{
+            color:white;
+            font-size: 30px;
+            font-weight: 700;
+            width: 200px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            position: absolute;
+        }
+        .item-1{
+            height: 220px;
+            background-color: #fbdff0;
+        }
+        .item-2{
+            height: 210px;
+            background-color: #f6c3e5;
+        }
+        .item-3{
+            height: 250px;
+            background-color: #7f78d2;
+        }
+        .item-4{
+            height: 240px;
+            background-color: #defcf9;
+        }
+        .item-5{
+            height: 220px;
+            background-color: #cadefc;
+        }
+        .item-6{
+            height: 180px;
+            background-color: #c3bef0;
+        }
+        .item-7{
+            height: 190px;
+            background-color: #d6e6f2;
+        }
+        .item-8{
+            height: 230px;
+            background-color: #e1f2fb;
+        }
+        .item-9{
+            height: 270px;
+            background-color: #f3dfe3;
+        }
+        .item-10{
+            height: 160px;
+            background-color: #e3fdfd;
+        }
+        .item-11{
+            height: 210px;
+            background-color: #f4eeff;
+        }
+        .item-12{
+            height: 200px;
+            background-color: #fbdff0;
+        }
+        .item-13{
+            height: 230px;
+            background-color: #f6c3e5;
+        }
+        .item-14{
+            height: 250px;
+            background-color: #7f78d2;
+        }
+        .item-15{
+            height: 240px;
+            background-color: #defcf9;
+        }
+        .item-16{
+            height: 210px;
+            background-color: #cadefc;
+        }
+        .item-17{
+            height: 180px;
+            background-color: #c3bef0;
+        }
+        .item-18{
+            height: 190px;
+            background-color: #d6e6f2;
+        }
+        .item-19{
+            height: 230px;
+            background-color: #e1f2fb;
+        }
+        .item-20{
+            height: 270px;
+            background-color: #b9cced;
+        }
+        .item-21{
+            height: 160px;
+            background-color: #e3fdfd;
+        }
+        .item-22{
+            height: 210px;
+            background-color: #f4eeff;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+    <div class="item item-6">6</div>
+    <div class="item item-7">7</div>
+    <div class="item item-8">8</div>
+    <div class="item item-9">9</div>
+    <div class="item item-10">10</div>
+    <div class="item item-11">11</div>
+    <div class="item item-12">12</div>
+    <div class="item item-13">13</div>
+    <div class="item item-14">14</div>
+    <div class="item item-15">15</div>
+    <div class="item item-16">16</div>
+    <div class="item item-17">17</div>
+    <div class="item item-18">18</div>
+    <div class="item item-19">19</div>
+    <div class="item item-20">20</div>
+    <div class="item item-21">21</div>
+    <div class="item item-22">22</div>
+</div>
+    <script>
+        let items=document.getElementsByClassName('item');
+        let gap=20;
+        waterfall();
+        function waterfall(){
+            let itemWidth=items[0].offsetWidth;
+            let pageWidth=window.innerWidth;
+            let columns=parseInt(pageWidth/(itemWidth+gap)) ;
+            let arr=[]
+            for(let i=0;i<items.length;i++){
+                if(i<columns){
+                    items[i].style.top='0px'
+                    items[i].style.left=i*(itemWidth+gap)+'px';
+                    arr.push(items[i].offsetHeight)
+                }else{
+                    let index=0
+                    let minHeight=arr[index]
+                    for(let j=0;j<arr.length;j++){
+                        if(minHeight>arr[j]){
+                            minHeight=arr[j]
+                            index=j
+                        }
+                    } 
+                    items[i].style.top=arr[index]+gap+'px'
+                    items[i].style.left=index*(itemWidth+gap)+'px'
+                    arr[index]=arr[index]+items[i].offsetHeight+gap
+                }
+                
+            }
+        }
+window.onresize=function(){
+    waterfall()
+}
+    </script>
+</body>
+</html>

@@ -5,11 +5,9 @@ body{
     background-color: #e1f2fb;
 }
 .title{
-    /* margin: 0 auto; */
     padding:0 50px;
     border-bottom: 0.5px solid #7f78d2;
     font-size: 28px;
-    /* padding-bottom: 10px; */
     height: 80px;
     line-height: 80px;
     color:#7f78d2;
@@ -22,10 +20,8 @@ body{
 }
 .talking{
     padding: 10px 0;
-    /* position: absolute; */
 }
 .left{
-    /* position:absolute; */
     width: 60px;
     float: left;
     text-align: center;
@@ -40,7 +36,6 @@ img{
 }
 .name{
     display: inline-block;
-    /* text-align: center; */
 }
 .content{
     display: inline-block;
@@ -50,11 +45,8 @@ img{
     border-radius: 20px;
     padding: 0px 20px;
     line-height: 40px;
-    /* position: absolute; */
     overflow: hidden;
     overflow-wrap: break-word;
-    /* margin-left: 100px; */
-    
 }
 .time{
     margin: 15px 0px 0px 80px;
@@ -63,19 +55,12 @@ img{
 footer{
     margin:0 auto 20px 50px;
     width: 90%;
-    /* position: relative; */
     height: 40px;
-    /* text-align: center; */
     border: 1px solid black;
-    /* background-color: pink; */
 }
 i{
     vertical-align: middle;
     padding: 0 5px;
-    /* position: absolute;
-    width: 50px;
-    height: 40px;
-    background-color: yellow; */
 }
 
 .chat-input{
@@ -93,11 +78,13 @@ i{
     width: 100px;
     height: 20px;
     font-size: 16px;
-    /* background-color: rgba(0, 0, 0, 0.3); */
     position:fixed;
     top: 100px;
     right: 0px;
     color: white;
     text-align: center;
-    /* display: none; */
+    background-color: #a6b1e1;
+    display: none;
+    border-radius: 5px 0 0 5px;
+    line-height: 20px;
 }
